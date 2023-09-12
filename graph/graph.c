@@ -12,7 +12,8 @@ int main(){
 	SetTargetFPS(60);
 
 	Coordinates coord[]={{1.0,0.5},{0.5,1.0},{0.3,0.2},{0.4,0.6},{0.1,2.0},{0.0,0.0},{0.5,0.5},{1.0,2.0},{0.0,2.0},{1.0,0.0}};
-	int num=10;
+	int num=sizeof(coord)/sizeof(coord[0]); //from this we get the size of the array
+	//printf("%d\n",num);
 
 	/*//debug
 	for (int i=0; i<num; ++i) {
@@ -38,11 +39,16 @@ int main(){
 				posx=coord[i].x*GetScreenWidth()/max.x+10;
 			} else if (coord[i].x>0.5) {
 				posx=coord[i].x*GetScreenWidth()/max.x-10;
+			} else {
+				posx=coord[i].x*GetScreenWidth()/max.x;
 			}
+
 			if (coord[i].y<0.5) {
 				posy=(1-coord[i].y/max.y)*GetScreenHeight()-10;
 			} else if (coord[i].y>0.5) {
 				posy=(1-coord[i].y/max.y)*GetScreenHeight()+10;
+			}else {
+				posy=(1-coord[i].y/max.y)*GetScreenHeight();
 			}
 			DrawCircle(posx, posy, 10, RED);
 		}
