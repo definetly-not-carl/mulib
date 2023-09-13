@@ -12,8 +12,8 @@ int main(){
 	SetTargetFPS(60);
 
 	Coordinates coord[]={{1.0,0.5},{0.5,1.0},{0.3,0.2},{0.4,0.6},{0.1,2.0},{0.0,0.0},{0.5,0.5},{1.0,2.0},{0.0,2.0},{1.0,0.0}};
-	int num=sizeof(coord)/sizeof(coord[0]); //from this we get the size of the array
-	//printf("%d\n",num);
+	int num=sizeof_array(coord); //from this we get the size of the array
+	printf("%d\n",num);
 
 	/*//debug
 	for (int i=0; i<num; ++i) {
