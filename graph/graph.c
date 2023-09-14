@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "../mulib.h"
+#include "./array.h" //this includes the variable coord that contains the array
 
 #define FACTOR 70
 #define WIDTH 16*FACTOR
@@ -11,7 +12,7 @@ int main(){
 	InitWindow(WIDTH, HEIGHT, "Graph drawer");
 	SetTargetFPS(60);
 
-	Coordinates coord[]={{1.0,0.5},{0.5,1.0},{0.3,0.2},{0.4,0.6},{0.1,2.0},{0.0,0.0},{0.5,0.5},{1.0,2.0},{0.0,2.0},{1.0,0.0}};
+	//Coordinates coord[]={{1.0,0.5},{0.5,1.0},{0.3,0.2},{0.4,0.6},{0.1,2.0},{0.0,0.0},{0.5,0.5},{1.0,2.0},{0.0,2.0},{1.0,0.0}};
 	int num=sizeof_array(coord); //from this we get the size of the array
 	printf("%d\n",num);
 
@@ -21,8 +22,10 @@ int main(){
 	}*/
 
 	Coordinates max = max_of_coord(coord, num);
+	Coordinates min = min_of_coord(coord, num);
+	Coordinates average = {(max.x+min.x)/2,(max.y+min.y)/2};
 
-	printf("[%f,%f]\n",max.x,max.y);
+	printf("MAX:\t[%f,%f]\nMIN:\t[%f,%f]\nAVG:\t[%f,%f]\n",max.x,max.y,min.x,min.y,average.x,average.y);
 
 	while (!WindowShouldClose()) {
 		if (IsKeyPressed(KEY_ESCAPE)) {
@@ -35,21 +38,20 @@ int main(){
 		DrawLine(val, val, val, GetScreenHeight()-10, WHITE);
 		int posx, posy;
 		for (int i=0; i<num; ++i) {
-			if (coord[i].x<0.5) {
-				posx=coord[i].x*GetScreenWidth()/max.x+10;
-			} else if (coord[i].x>0.5) {
-				posx=coord[i].x*GetScreenWidth()/max.x-10;
+			if (coord[i].x<average.x) {
+				posx=coord[i].x*GetScreenWidth()/max.x+val;
+			} else if (coord[i].x>average.x) {
+				posx=coord[i].x*GetScreenWidth()/max.x-val;
 			} else {
 				posx=coord[i].x*GetScreenWidth()/max.x;
 			}
-
-			if (coord[i].y<0.5) {
-				posy=(1-coord[i].y/max.y)*GetScreenHeight()-10;
-			} else if (coord[i].y>0.5) {
-				posy=(1-coord[i].y/max.y)*GetScreenHeight()+10;
-			}else {
+			if (coord[i].y<=average.y) {
+				posy=(1-coord[i].y/max.y)*GetScreenHeight()-val;
+			} else if (coord[i].y>average.y) {
+				posy=(1-coord[i].y/max.y)*GetScreenHeight()+val;
+			} else {
 				posy=(1-coord[i].y/max.y)*GetScreenHeight();
-			}
+			}			
 			DrawCircle(posx, posy, 10, RED);
 		}
 

@@ -41,3 +41,17 @@ Coordinates max_of_coord(Coordinates *array, int dim){
 	}
 	return max;
 }
+
+Coordinates min_of_coord(Coordinates *array, int dim){
+	Coordinates min={0.0,0.0};
+	for (int i=0; i<dim; ++i) {
+		if (array[i].x<min.x) {
+			min.x=array[i].x;
+		}
+		if (array[i].y<min.y) {
+			min.y=array[i].y;
+		}
+		//printf("%fx%f\n",min.x,min.y); //debug
+	}
+	return min;
+}
