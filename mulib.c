@@ -10,8 +10,7 @@
 //
 //  Created by Carlo Moroni on 08/09/23
 //
-//  Update 08/09/23
-//
+
 #include "mulib.h"
 #include <stdio.h>
 
