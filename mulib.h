@@ -19,7 +19,7 @@
 #define MULIB_H_
 
 #define PI_100 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
-#define sizeof_array(array) (sizeof(array)/sizeof(array[0]))
+#define sizeof_array(array) (sizeof(array)/sizeof(array[0])) //it's awful, but it gets the work done
 
 #endif
 

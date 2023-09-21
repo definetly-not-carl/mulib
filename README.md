@@ -2,10 +2,10 @@
 This is a library of things. I will implement things if I think that they will be useful for me.
 
 ## Inspiration
-The name of this library has been inspired by the library ```lambdalib``` [link](https://davideborra.github.io/informatica/).
+The name of this library has been inspired by the library [lambdalib](https://davideborra.github.io/informatica/).
 
 ## Compilation
-In order to compile your program with the library, you will need to execute the following commad:
+In order to compile your program with the library, you will need to execute the following command:
 ```
 cc -o <executable_name> <c_file.c> mulib.c
 ```
