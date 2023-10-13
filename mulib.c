@@ -13,6 +13,7 @@
 
 #include "mulib.h"
 #include <stdio.h>
+#include <math.h>
 
 void mulib_print(){
 	printf("        _ _ _     \n  _   _| (_) |__  \n | | | | | | '_ \\ \n | |_| | | | |_) |\n | ._,_|_|_|_.__/ \n |_|              \n"); //This is terrible, but it prints well
@@ -53,4 +54,28 @@ Coordinates min_of_coord(Coordinates *array, int dim){
 		//printf("%fx%f\n",min.x,min.y); //debug
 	}
 	return min;
+}
+
+float average(float *array, int dim){
+	float sum=0;
+	for (int i=0; i<dim; ++i) {
+		sum=sum+array[i];
+	}
+	float average=sum/dim;
+	return average;
+}
+
+float variance(float *array, int dim){
+	float sum=0;
+	float avg=average(array, dim);
+	for (int i=0; i<dim; ++i) {
+		sum=sum+powf(array[i]-avg,2.0);
+	}
+	float variance=sum/(dim-1);
+	return variance;
+}
+
+float standard_deviation(float *array, int dim){
+	float std_dev=sqrtf(variance(array, dim));
+	return std_dev;
 }

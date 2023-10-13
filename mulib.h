@@ -32,3 +32,6 @@ void mulib_print();
 char *shift_args(int *argc, char ***argv);
 Coordinates max_of_coord(Coordinates *array, int dim);
 Coordinates min_of_coord(Coordinates *array, int dim);
+float average(float *array, int dim);
+float variance(float *array, int dim);
+float standard_deviation(float *array, int dim);
