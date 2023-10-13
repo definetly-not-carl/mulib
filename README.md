@@ -7,7 +7,7 @@ The name of this library has been inspired by the library [lambdalib](https://da
 ## Compilation
 In order to compile your program with the library, you will need to execute the following command:
 ```
-cc -o <executable_name> <c_file.c> mulib.c
+cc -o <executable_name> <c_file.c> mulib.c -lm
 ```
 
 If you want to compile the graph project, you will have to get raylib and then you can compile with this command (on UNIX):
